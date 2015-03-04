@@ -1,8 +1,8 @@
 <?php
 
-namespace fg\UrlAlias\models;
+namespace dlds\urlias\models;
 
-class UrlRule extends \fg\UrlAlias\models\base\UrlRule
+class UrlRule extends \dlds\urlias\models\base\UrlRule
 {
     const STATUS_ACTIVE  = 1;
 

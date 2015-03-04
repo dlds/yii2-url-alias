@@ -1,6 +1,6 @@
 <?php
 
-namespace fg\UrlAlias\components;
+namespace dlds\urlias\components;
 
 use Yii;
 use yii\web\UrlRule;
@@ -25,14 +25,14 @@ class BaseUrlRule extends UrlRule
 
     public function createUrl($manager, $route, $params)
     {
-        if ( strpos($route, $this->routePrefix) !== false)
+        if ($this->routePrefix === false || strpos($route, $this->routePrefix) !== false)
         {
             $route   = str_replace($this->routePrefix, '', $route);
             $dbRoute = Yii::$app->cache->get($this->getCachePrefix($route, $params));
 
             if ($dbRoute === false)
             {
-                $dbRoute = \fg\UrlAlias\models\UrlRule::getRoute($route, $params);
+                $dbRoute = \dlds\urlias\models\UrlRule::getRoute($route, $params);
                 Yii::$app->cache->set($this->getCachePrefix($route, $params), $dbRoute);
             }
 
@@ -48,7 +48,7 @@ class BaseUrlRule extends UrlRule
     public function parseRequest($manager, $request)
     {
         $_slug  = $this->generateSaltUrl($request);
-        $route  = \fg\UrlAlias\models\UrlRule::getRouteBySlug($_slug);
+        $route  = \dlds\urlias\models\UrlRule::getRouteBySlug($_slug);
 
         if ( !is_null($route))
         {
@@ -69,7 +69,7 @@ class BaseUrlRule extends UrlRule
         if ($this->redirect301 == true)
         {
 
-            $route = \fg\UrlAlias\models\UrlRule::getRoute($_url, $_params);
+            $route = \dlds\urlias\models\UrlRule::getRoute($_url, $_params);
 
             if ( !is_null($route) && $route->redirect)
             {

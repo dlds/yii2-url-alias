@@ -1,6 +1,6 @@
 <?php
 
-namespace fg\UrlAlias\models\base;
+namespace dlds\urlias\models\base;
 
 use Yii;
 

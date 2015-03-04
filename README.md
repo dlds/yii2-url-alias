@@ -42,7 +42,7 @@ INSERT INTO `url_rule` (`id`, `slug`, `route`, `params`, `status`) VALUES
             'showScriptName'  => false,
             'rules' => [
                 [
-                    'class' => 'fg\UrlAlias\components\BaseUrlRule',
+                    'class' => 'dlds\urlias\components\BaseUrlRule',
                     'connectionID'  => 'db',
                     'redirect301'   => true //if you want 301 redirect
                 ]
