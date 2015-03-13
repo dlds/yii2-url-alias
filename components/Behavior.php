@@ -80,7 +80,7 @@ class Behavior extends \yii\base\Behavior {
 
         $rule->redirect = 0;
         $rule->status = 1;
-
+        
         if ($rule->save())
         {
             \dlds\urlias\components\BaseUrlRule::removeCache($route, $params);

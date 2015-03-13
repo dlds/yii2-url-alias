@@ -86,7 +86,12 @@ class BaseUrlRule extends UrlRule {
 
     public static function removeCache($route, $params)
     {
-        return Yii::$app->cache->delete(static::getCachePrefix($route, $params));
+        if (isset(\Yii::$app->frontCache))
+        {
+            return \Yii::$app->frontCache->delete(static::getCachePrefix($route, $params)) && \Yii::$app->cache->delete(static::getCachePrefix($route, $params));
+        }
+
+        return \Yii::$app->cache->delete(static::getCachePrefix($route, $params));
     }
 
 }
