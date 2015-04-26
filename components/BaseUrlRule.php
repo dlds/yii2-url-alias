@@ -86,7 +86,7 @@ class BaseUrlRule extends UrlRule {
 
     public static function removeCache($route, $params)
     {
-        if (isset(\Yii::$app->frontCache))
+        if (\Yii::$app->frontCache)
         {
             return \Yii::$app->frontCache->delete(static::getCachePrefix($route, $params)) && \Yii::$app->cache->delete(static::getCachePrefix($route, $params));
         }
